@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { Link, useParams } from 'react-router-dom';
 
 
-
 const TodoListContainer = () => {
     const dispatch = useDispatch()
     const {todos} = useSelector((state) => state.todos);
@@ -19,16 +18,16 @@ const TodoListContainer = () => {
                             return <StTodo key={todo.id}>
                                 {todo.title}<br/>
                                 {todo.content}
-                                <DeleteButton
+                                <CusttomButton
                                     onClick={() => {
                                         dispatch(deleteTodo(todo.id))
                                     }}> 삭제하기
-                                </DeleteButton>
-                                <DeleteButton
+                                </CusttomButton>
+                                <CusttomButton
                                     onClick={() => {
                                         dispatch(toggleTodo(todo.id))
                                     }}> 완료하기
-                                </DeleteButton>
+                                </CusttomButton>
                                 <Link to={`/${todo.id}`}>
                                     <span>보기</span>
                                 </Link>
@@ -44,16 +43,16 @@ const TodoListContainer = () => {
                             return <StTodo key={todo.id}>
                                 {todo.title}<br/>
                                 {todo.content}
-                                <DeleteButton
+                                <CusttomButton
                                     onClick={() => {
                                         dispatch(deleteTodo(todo.id))
                                     }}> 삭제하기
-                                </DeleteButton>
-                                <DeleteButton
+                                </CusttomButton>
+                                <CusttomButton
                                     onClick={() => {
                                         dispatch(toggleTodo(todo.id))
                                     }}> 취소하기
-                                </DeleteButton>
+                                </CusttomButton>
                                 <Link to={`/${todo.id}`}>
                                     <span>보기</span>
                                 </Link>
@@ -89,11 +88,11 @@ const StTodo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 24px;
   border-radius: 12px;
+  padding: 10px 24px;
 `;
 
-const DeleteButton = styled.button`
+const CusttomButton = styled.button`
   border: 1px solid #ddd;
   height: 20px
 `

@@ -8,14 +8,28 @@ const TodoPage = () => {
     const param = useParams();
     const todo = todos.find((todo) => todo.id === parseInt(param.id));
     return(
-        <div>
+        <TodoBox>
             <div>{todo.title}</div>
             <div>{todo.content}</div>
             <Link to={`/`}>
                 <span>돌아가기</span>
             </Link>
-        </div>
+        </TodoBox>
     )
 }
+
+const TodoBox = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+`;
+
+
+
+
 
 export default TodoPage
