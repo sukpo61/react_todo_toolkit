@@ -10,12 +10,14 @@ const TodoListContainer = () => {
     const {todos} = useSelector((state) => state.todos);
     return (
         <ListContainer>
+
             <h1>Woking</h1>
+
             <StTodos>
 
-                {todos.map((todo) => {
-                        if (!todo.isDone)
-                            return <StTodo key={todo.id}>
+                {todos.map((todo) =>
+                        (!todo.isDone) &&
+                             <StTodo key={todo.id}>
                                 {todo.title}<br/>
                                 {todo.content}
                                 <CusttomButton
@@ -32,15 +34,17 @@ const TodoListContainer = () => {
                                     <span>보기</span>
                                 </Link>
                             </StTodo>
-                    }
+
                 )}
             </StTodos>
+
             <h1>Done</h1>
+
             <StTodos>
 
-                {todos.map((todo) => {
-                        if (todo.isDone)
-                            return <StTodo key={todo.id}>
+                {todos.map((todo) =>
+                         (todo.isDone) &&
+                             <StTodo key={todo.id}>
                                 {todo.title}<br/>
                                 {todo.content}
                                 <CusttomButton
@@ -57,7 +61,7 @@ const TodoListContainer = () => {
                                     <span>보기</span>
                                 </Link>
                             </StTodo>
-                    }
+
                 )}
 
 
