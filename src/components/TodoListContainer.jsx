@@ -2,72 +2,82 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, toggleTodo } from "../redux/modules/todos";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const TodoListContainer = () => {
-    const dispatch = useDispatch()
-    const {todos} = useSelector((state) => state.todos);
-    return (
-        <ListContainer>
+  const dispatch = useDispatch();
+  const { todos } = useSelector((state) => state.todos);
+  return (
+    <ListContainer>
+      <h1>Woking</h1>
 
-            <h1>Woking</h1>
+      <StTodos>
+        {todos.map(
+          (todo) =>
+            !todo.isDone && (
+              <StTodo key={todo.id}>
+                {todo.title}
+                <br />
+                {todo.content}
+                <CusttomButton
+                  onClick={() => {
+                    dispatch(deleteTodo(todo.id));
+                  }}
+                >
+                  {" "}
+                  삭제하기
+                </CusttomButton>
+                <CusttomButton
+                  onClick={() => {
+                    dispatch(toggleTodo(todo.id));
+                  }}
+                >
+                  {" "}
+                  완료하기
+                </CusttomButton>
+                <Link to={`/${todo.id}`}>
+                  <span>보기</span>
+                </Link>
+              </StTodo>
+            )
+        )}
+      </StTodos>
 
-            <StTodos>
+      <h1>Done</h1>
 
-                {todos.map((todo) =>
-                        (!todo.isDone) &&
-                             <StTodo key={todo.id}>
-                                {todo.title}<br/>
-                                {todo.content}
-                                <CusttomButton
-                                    onClick={() => {
-                                        dispatch(deleteTodo(todo.id))
-                                    }}> 삭제하기
-                                </CusttomButton>
-                                <CusttomButton
-                                    onClick={() => {
-                                        dispatch(toggleTodo(todo.id))
-                                    }}> 완료하기
-                                </CusttomButton>
-                                <Link to={`/${todo.id}`}>
-                                    <span>보기</span>
-                                </Link>
-                            </StTodo>
-
-                )}
-            </StTodos>
-
-            <h1>Done</h1>
-
-            <StTodos>
-
-                {todos.map((todo) =>
-                         (todo.isDone) &&
-                             <StTodo key={todo.id}>
-                                {todo.title}<br/>
-                                {todo.content}
-                                <CusttomButton
-                                    onClick={() => {
-                                        dispatch(deleteTodo(todo.id))
-                                    }}> 삭제하기
-                                </CusttomButton>
-                                <CusttomButton
-                                    onClick={() => {
-                                        dispatch(toggleTodo(todo.id))
-                                    }}> 취소하기
-                                </CusttomButton>
-                                <Link to={`/${todo.id}`}>
-                                    <span>보기</span>
-                                </Link>
-                            </StTodo>
-
-                )}
-
-
-            </StTodos>
-        </ListContainer>
-    );
+      <StTodos>
+        {todos.map(
+          (todo) =>
+            todo.isDone && (
+              <StTodo key={todo.id}>
+                {todo.title}
+                <br />
+                {todo.content}
+                <CusttomButton
+                  onClick={() => {
+                    dispatch(deleteTodo(todo.id));
+                  }}
+                >
+                  {" "}
+                  삭제하기
+                </CusttomButton>
+                <CusttomButton
+                  onClick={() => {
+                    dispatch(toggleTodo(todo.id));
+                  }}
+                >
+                  {" "}
+                  취소하기
+                </CusttomButton>
+                <Link to={`/${todo.id}`}>
+                  <span>보기</span>
+                </Link>
+              </StTodo>
+            )
+        )}
+      </StTodos>
+    </ListContainer>
+  );
 };
 
 export default TodoListContainer;
@@ -75,8 +85,7 @@ export default TodoListContainer;
 const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  `;
-
+`;
 
 const StTodos = styled.div`
   display: flex;
@@ -98,5 +107,5 @@ const StTodo = styled.div`
 
 const CusttomButton = styled.button`
   border: 1px solid #ddd;
-  height: 20px
-`
+  height: 20px;
+`;

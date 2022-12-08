@@ -1,8 +1,7 @@
 // Action value
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
-const TOGGLE_TODO = "TOGGLE_TODO"
-
+const TOGGLE_TODO = "TOGGLE_TODO";
 
 // Action Creator
 export const addTodo = (payload) => {
@@ -37,31 +36,29 @@ const initialState = {
 
 // Reducer
 const todos = (state = initialState, action) => {
-
-
   switch (action.type) {
     case ADD_TODO:
       return {
         ...state,
         todos: [...state.todos, action.payload],
       };
-    case  DELETE_TODO:
+    case DELETE_TODO:
       return {
         todos: state.todos.filter((todos) => todos.id !== action.payload),
       };
-    case  TOGGLE_TODO:
-
-      let Todolist = state.todos.slice()
-          Todolist.find(e => e.id === action.payload).isDone = !Todolist.find(e => e.id === action.payload).isDone;
+    case TOGGLE_TODO:
+      let Todolist = state.todos.slice();
+      Todolist.find((e) => e.id === action.payload).isDone = !Todolist.find(
+        (e) => e.id === action.payload
+      ).isDone;
 
       return {
-        todos: Todolist
+        todos: Todolist,
       };
 
     default:
       return state;
   }
 };
-
 
 export default todos;
