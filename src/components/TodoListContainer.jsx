@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTodo, toggleTodo } from "../redux/modules/todos";
 import styled from "styled-components";
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const TodoListContainer = () => {
