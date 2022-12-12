@@ -17,29 +17,29 @@ const AddForm = () => {
       addTodo({
         id: todos.length + 1,
         title,
-          content,
+        content,
         isDone: false,
       })
     );
 
     setTitle("");
     setContent("");
-
   };
-
 
   return (
     <StFormContainer>
       <form onSubmit={onSubmitHandler}>
         <label>Todos의 제목을 입력하세요</label>
-        <StInput className="title"
+        <StInput
+          className="title"
           type="text"
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);
           }}
         />
-          <StInput className="contents"
+        <StInput
+          className="contents"
           type="text"
           value={content}
           onChange={(e) => {
