@@ -19,6 +19,7 @@ const AddForm = () => {
         title,
         content,
         isDone: false,
+        displaytoggle: true,
       })
     );
 

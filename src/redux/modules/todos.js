@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
   todos: [
     {
@@ -30,6 +31,7 @@ const todosSlice = createSlice({
     deleteTodo: (state, action) => {
       state.todos = state.todos.filter((todos) => todos.id !== action.payload);
     },
+
     toggleTodo: (state, action) => {
       let Todolist = state.todos.slice();
       Todolist.find((e) => e.id === action.payload).isDone = !Todolist.find(
