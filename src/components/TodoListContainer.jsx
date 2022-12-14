@@ -5,9 +5,11 @@ import TodosBox from "./TodosBox";
 const TodoListContainer = () => {
   return (
     <ListContainer>
+
       <TodosBox Bool={false}></TodosBox>
 
       <TodosBox Bool={true}></TodosBox>
+      
     </ListContainer>
   );
 };
