@@ -11,7 +11,6 @@ const AddForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(todos);
     if (title === "") return; // 아무것도 입력하지 않았을 때 dispatch 하지 않음
 
     dispatch(

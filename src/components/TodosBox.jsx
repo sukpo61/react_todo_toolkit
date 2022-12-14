@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  deleteTodo,
-  toggleTodo,
-  updateTodo,
+  __deleteTodo,
+  __updateTodo,
   toggleDisplay,
 } from "../redux/modules/todos";
 import styled from "styled-components";
@@ -12,23 +11,25 @@ import { Link } from "react-router-dom";
 const TodosBox = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
-  const onSubmitHandler = (id) => {
+  const onSubmitHandler = (todo) => {
     if (title === "") return; // 아무것도 입력하지 않았을 때 dispatch 하지 않음
+    console.log(todo);
+    let NewTodo = {
+      ...todo,
+      title: title,
+      content: content,
+      displaytoggle: true,
+    };
 
-    dispatch(
-      updateTodo({
-        id: id,
-        title: title,
-        content: content,
-      })
-    );
+    console.log(NewTodo);
+
+    dispatch(__updateTodo(NewTodo));
 
     setTitle("");
     setContent("");
-    dispatch(toggleDisplay(id));
     const udBtns = document.querySelectorAll(".editButton");
     udBtns.forEach((udBtn) => (udBtn.disabled = false));
   };
@@ -66,7 +67,7 @@ const TodosBox = (props) => {
                     />
                     <CusttomButton
                       onClick={() => {
-                        onSubmitHandler(todo.id);
+                        onSubmitHandler(todo);
                       }}
                     >
                       완료
@@ -75,14 +76,19 @@ const TodosBox = (props) => {
                 )}
                 <CusttomButton
                   onClick={() => {
-                    dispatch(deleteTodo(todo.id));
+                    dispatch(__deleteTodo(todo.id));
                   }}
                 >
                   삭제하기
                 </CusttomButton>
                 <CusttomButton
                   onClick={() => {
-                    dispatch(toggleTodo(todo.id));
+                    let NewTodo = {
+                      ...todo,
+                      isDone: !todo.isDone,
+                    };
+
+                    dispatch(__updateTodo(NewTodo));
                   }}
                 >
                   {props.Bool ? "취소하기" : "완료하기"}

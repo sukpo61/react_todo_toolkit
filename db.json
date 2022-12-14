@@ -1,19 +1,25 @@
 {
-  "posts": [
+  "todos": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "ㅇㄴㄹㄹㄴㅇ",
+      "content": "ㄹㄴㅇㄹㄴㅇㄹ",
+      "isDone": true,
+      "displaytoggle": true
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "ㄴㅇㄹ",
+      "content": "ㄹㄴㅇㄹㄴㅇ",
+      "isDone": false,
+      "displaytoggle": true
+    },
+    {
+      "id": 3,
+      "title": "ㅇㄴㄹㅇㄴ",
+      "content": "ㄹㄴㅇㄹㄴㅇㄹ",
+      "isDone": false,
+      "displaytoggle": true
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
