@@ -1,4 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+export const __addTodo = createAsyncThunk(
+  // 첫번째 인자 : action value
+  "addTodo",
+  // 두번째 인자 : 콜백함수
+  (payload, thunkAPI) => {
+    setTimeout(() => {
+      thunkAPI.dispatch(addTodo(payload));
+    }, 3000);
+  }
+);
 
 const initialState = {
   todos: [

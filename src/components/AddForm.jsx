@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../redux/modules/todos";
+import { __addTodo } from "../redux/modules/todos";
 import styled from "styled-components";
 
 const AddForm = () => {
@@ -11,10 +11,11 @@ const AddForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    console.log(todos);
     if (title === "") return; // 아무것도 입력하지 않았을 때 dispatch 하지 않음
 
     dispatch(
-      addTodo({
+      __addTodo({
         id: todos.length + 1,
         title,
         content,
